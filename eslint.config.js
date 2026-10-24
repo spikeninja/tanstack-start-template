@@ -3,6 +3,7 @@
 import { plugin as shadcn } from '@shadcn/lint'
 import pluginQuery from '@tanstack/eslint-plugin-query'
 import pluginRouter from '@tanstack/eslint-plugin-router'
+import betterTailwindcss from 'eslint-plugin-better-tailwindcss'
 import { tanstackConfig } from '@tanstack/eslint-config'
 import tsParser from '@typescript-eslint/parser'
 
@@ -15,7 +16,12 @@ export default [
       parser: tsParser,
       parserOptions: { ecmaFeatures: { jsx: true } },
     },
-    plugins: { shadcn },
+    plugins: { shadcn, 'better-tailwindcss': betterTailwindcss },
+    settings: {
+      'better-tailwindcss': {
+        entryPoint: 'src/styles.css',
+      },
+    },
     rules: {
       'import/no-cycle': 'off',
       'import/order': 'off',
@@ -66,6 +72,9 @@ export default [
       'shadcn/no-restyle': 'error',
       'shadcn/no-inline-styles': 'error',
       'shadcn/require-static-classes': 'error',
+      'better-tailwindcss/no-conflicting-classes': 'error',
+      'better-tailwindcss/no-duplicate-classes': 'error',
+      'better-tailwindcss/enforce-shorthand-classes': 'error',
     },
   },
   {
