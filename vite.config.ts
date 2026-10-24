@@ -14,7 +14,9 @@ const config = defineConfig({
     devtools(),
     nitro({ rollupConfig: { external: [/^@sentry\//] } }),
     tailwindcss(),
-    tanstackStart(),
+    tanstackStart({
+      importProtection: { behavior: 'error' },
+    }),
     viteReact(),
     babel({ presets: [reactCompilerPreset()] }),
   ],
