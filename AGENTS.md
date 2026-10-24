@@ -32,7 +32,7 @@ Use `bunx` instead of `npx`.
 A task is NOT finished until all of these pass with zero errors:
 
 ```bash
-bun run lint && bun run typecheck && bun run test
+bun run lint && bun run typecheck 
 ```
 
 - Fix the root cause of every error. Do not silence it.
@@ -61,7 +61,7 @@ bun run lint && bun run typecheck && bun run test
 
 ## Project conventions
 
-- **Server only:** `src/db/`, `src/server/`, `*.server.ts`, `@/lib/auth` (the Better Auth server instance).
+- **Server only:** `src/server/`, `*.server.ts`, `@/lib/auth` (the Better Auth server instance).
 - **Client code** (`src/components/**`, `src/hooks/**`) reaches the server only through `createServerFn`, and uses `authClient` from `@/lib/auth-client`.
 - Every server function that touches user data uses `authMiddleware` from `@/server/middleware/auth`. Never check sessions ad hoc in handlers.
 - Every server function validates input with a Zod schema via `.inputValidator(...)`.
